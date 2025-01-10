@@ -1,8 +1,4 @@
-
-
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
 public class PipeMiddleScript : MonoBehaviour
 {
@@ -14,13 +10,18 @@ public class PipeMiddleScript : MonoBehaviour
     {
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-    }
-    private void OnTriggerEnter2D(Collider2D collision){
-        logic.addScore();
+        /*
+            Hack - since the bird has two colliders, one that's a trigger (used for this purpose)
+            and one that's a normal collider (used for pipe collision), we only want to trigger
+            score increase once. This function will be called for both colliders, so only increase
+            the score if the one we're colliding with is the trigger collider.
+         */
+        if (collision.isTrigger)
+        {
+            logic.addScore();
+        }
     }
 }

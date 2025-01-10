@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,19 +12,30 @@ public class LogicScript : MonoBehaviour
     public int playerScore;
     public Text scoreText;
     public  GameObject gameOverScreen;
-    
-    
+
+    private void Start()
+    {
+        gameOverScreen.SetActive(false);
+    }
+
+
     [ContextMenu("Increase Score")]
 
     public void addScore(){
         playerScore += 1;
-        scoreText.text = playerScore.ToString();
+        scoreText.text = "Score: " + playerScore;
     }
 
     public void restartGame(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    public void gameOver() {
-
+    public void gameOver()
+    {
+        gameOverScreen.SetActive(true);
+        BirdScript bird = FindAnyObjectByType<BirdScript>();
+        if (bird != null)
+        {
+            Destroy(bird.gameObject);
+        }
     }
 }

@@ -25,7 +25,8 @@ public class BirdScript : MonoBehaviour
         
         
     }
-    // private void OnCollisionEnter2D(Collision2D collision){
-    //     logic.gameOver();
-    // }
+    
+    private void OnCollisionEnter2D(Collision2D collision){
+        logic.gameOver();
+    }
 }
