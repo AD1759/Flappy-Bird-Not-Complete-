@@ -706,6 +706,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myRigidbody: {fileID: 870806500}
   flapStrength: 7
+  logic: {fileID: 0}
 --- !u!58 &870806499
 CircleCollider2D:
   m_ObjectHideFlags: 0
